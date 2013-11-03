@@ -66,20 +66,16 @@ $('#saveditems').on('pageinit', function(){
         //Object properties contain array with the form label and input value.
         getSelectedCheckedBoxes(); 
         var itemList            = {};
-            itemList.petname    = ["Pet Name:", getElements('petname').value];
-            itemList.petage     = ["Pet Age:", getElements('petage').value];
-            itemList.pettype    = ["Pet Type:", getElements('pettype').value];
-            itemList.flea       = ["Flea:", fleaValue];
-            itemList.fleaRx     = ["Flea Rx:", getElements('fleaRx').value];
-            itemList.heartworm  = ["Heartworm:", heartwormValue];
-            itemList.other      = ["Other:", otherValue];
-            itemList.date       = ["Date:", getElements('date').value];
-            itemList.range      = ["Range:", getElements('range').value];
-            itemList.note       = ["Note:", getElements('note').value];
+            itemList.artist    = ["Artist's Name:", $("#artist").value];
+            itemList.album     = ["Album Title:", $("#album").value];
+            itemList.format    = ["Music Format:", $("#format").value];
+            itemList.list       = ["Which List:", fleaValue]; //Need to fix this to make sure it pulls radio button values.
+            itemList.date       = ["Release Date:", $("#date").value];
+            itemList.notes       = ["Notes:", $("#notes").value];
             
             //Save data into Local Storage
             localStorage.setItem(generateId, JSON.stringify(itemList));
-            alert("Reminder has been added!");
+            alert("Album has been added!");
     }
     
     function getDataFromStorage() {
