@@ -20,20 +20,15 @@ $('#saveditems').on('pageinit', function(){
     
     //Function to determine which check boxes are checked:
     function getSelectedCheckedBoxes() {
-        if ($("#flea").checked) {
-            fleaValue = $("#flea").value;
+        if ($("#radio1").checked) {
+            fleaValue = $("#radio1").value;
         } else {
             fleaValue = "No"
         };
-        if (getElements('heartworm').checked){
-            heartwormValue = getElements('heartworm').value;
+        if ($("#radio2").checked){
+            heartwormValue = $("#radio2").value;
         } else {
             heartwormValue = "No"
-        };
-        if (getElements('other').checked) {
-            otherValue = getElements('other').value;
-        } else{
-            otherValue = "No"
         };
     }
 
