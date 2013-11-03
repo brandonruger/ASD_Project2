@@ -281,11 +281,11 @@ $('#saveditems').on('pageinit', function(){
     
     //Set Link & Submit Click Events
     
-    var displayData = getElements('displayData');
+    var displayData = $("#displayData");
     displayData.addEventListener("click", getDataFromStorage);
-    var clearData = getElements('clearData');
+    var clearData = $("#clearData");
     clearData.addEventListener("click", clearLocalStorage);
-    var createButton = getElements('button');
+    var createButton = $("#button");
     createButton.addEventListener("click", validateInput);
     
     
