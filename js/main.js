@@ -116,15 +116,7 @@ $('#saveditems').on('pageinit', function(){
         
     }
     
-    //Get the Image for the right select category
-    function getIcon(fleaType, subList) {
-        var imageList = document.createElement('li');
-        subList.appendChild(imageList);
-        var createImg = document.createElement('img');
-        var setImgSrc = createImg.setAttribute("src", "img/" + fleaType + ".png");
-        imageList.appendChild(createImg);
-    }
-    
+
     //Function to create edit/delete links for each stored item when displayed.
     function createEditDelLinks(key, newLinksLi) {
         //add edit single item link
