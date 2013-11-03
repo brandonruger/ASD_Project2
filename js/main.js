@@ -1,6 +1,6 @@
 /* Brandon Ruger
  * ASD 1311
- * Project 1 */
+ * Project 2 */
 
 $('#home').on('pageinit', function(){
 	//code needed for home page goes here
