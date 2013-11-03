@@ -67,13 +67,13 @@
                         
                         <section data-role="fieldcontain">
                             <label>Artist: (Required)</label>
-                            <input type="text" name="artist" class="required" placeholder="Enter artist's name." data-clear-btn="true" />
+                            <input id="artist" type="text" name="artist" class="required" placeholder="Enter artist's name." data-clear-btn="true" />
                             <p>Example: Imagine Dragons</p>
                         </section>
                         
                         <section data-role="fieldcontain">
                             <label>Album Title: (Required)</label>
-                            <input type="text" name="album" class="required" placeholder="Enter album name." data-clear-btn="true" />
+                            <input id="album" type="text" name="album" class="required" placeholder="Enter album name." data-clear-btn="true" />
                             <p>Example: Night Visions</p>
                         </section>
                         
@@ -90,9 +90,9 @@
                         <section data-role="fieldcontain">
                             <fieldset data-role="controlgroup">
                                 <legend>Add item to which list:</legend>
-                                <input type="radio" name="whichlist" id="current" value="current-collection" />
+                                <input id="radio1" type="radio" name="whichlist" id="current" value="current-collection" />
                                     <label for="current">Current Collection</label>
-                                <input type="radio" name="whichlist" id="wishlist" value="wish-list" />
+                                <input id="radio 2" type="radio" name="whichlist" id="wishlist" value="wish-list" />
                                     <label for="wishlist">Wish List</label>
                             </fieldset>                            
                         </section>
