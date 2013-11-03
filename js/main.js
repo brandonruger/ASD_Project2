@@ -160,34 +160,27 @@ $('#saveditems').on('pageinit', function(){
         toHideForm("off");
         
         //Populate form fields with current localStorage values.
-        getElements('petname').value = itemList.petname[1];
-        getElements('petage').value = itemList.petage[1];
-        getElements('pettype').value = itemList.pettype[1];
+        $("#artist").value = itemList.artist[1];
+        $("#album").value = itemList.album[1];
+        $("#format").value = itemList.format[1];
 
-        if(itemList.flea[1] == "Flea Medication") {
-            getElements('flea').setAttribute("checked", "checked");
-        }
-        
-        getElements('select').value = itemList.fleaRx[1];
-        
-        if (itemList.heartworm[1] == "Heartworm Medication") {
-            getElements('heartworm').setAttribute("checked", "checked");
-            
-        }
-        
-        if (itemList.other[1] == "Other Meds") {
-            getElements('other').setAttribute("checked", "checked");
+        if(itemList.radio1[1] == "current-collection") {
+            $("#radio1").setAttribute("checked", "checked");
         }
                 
-        getElements('date').value = itemList.date[1];
-        getElements('range').value = itemList.range[1];
-        getElements('note').value = itemList.note[1];
+        if (itemList.radio2[1] == "wish-list") {
+            $("#radio2").setAttribute("checked", "checked");
+            
+        }
+                
+        $("#date").value = itemList.date[1];
+        $("#notes").value = itemList.notes[1];
         
         //Remove the initial listener from the imput 'create reminder' button.
         createButton.removeEventListener("click", validateInput);
         //Change Submit button value to Edit button
-        getElements('button').value = "Update Reminder";
-        var changeButton = getElements('button');
+        $("#saveAlbumButton").value = "Update Album";
+        var changeButton = $("#saveAlbumButton");
         
         //Save the key value established in this function as a property of the editSubmit event.
         //So that we can use that value when we save the data we edited.
