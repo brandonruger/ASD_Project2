@@ -35,17 +35,17 @@ $('#saveditems').on('pageinit', function(){
     function toHideForm(n) {
         switch (n){
             case "on":
-                $("#addAlbumForm").style.display = "none";
-                $("#clearData").style.display = "inline";
-                $("#displayData").style.display = "none";
-                $("#addNewReminder").style.display = "inline";
+                $("#addAlbumForm").css("display", "none");
+                $("#clearData").css("display", "inline");
+                $("#displayData").css("display", "none");
+                $("#addNewReminder").css("display", "inline");
                 break;
             case "off":
-                $("#addAlbumForm").style.display = "block";
-                $("#clearData").style.display = "inline";
-                $("#displayData").style.display = "inline";
-                $("#addNewReminder").style.display = "none";
-                $("#items").style.display = "none";
+                $("#addAlbumForm").css("display", "block");
+                $("#clearData").css("display", "inline");
+                $("#displayData").css("display", "inline");
+                $("#addNewReminder").css("display", "none");
+                $("#items").css("display", "none");
                 break;
             default:
                 return false;
