@@ -165,11 +165,11 @@ $('#saveditems').on('pageinit', function(){
         $("#format").value = itemList.format[1];
 
         if(itemList.radio1[1] == "current-collection") {
-            $("#radio1").setAttribute("checked", "checked");
+            $("#radio1").attr("checked", "checked");
         }
                 
         if (itemList.radio2[1] == "wish-list") {
-            $("#radio2").setAttribute("checked", "checked");
+            $("#radio2").attr("checked", "checked");
             
         }
                 
