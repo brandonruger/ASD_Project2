@@ -91,7 +91,7 @@ $('#saveditems').on('pageinit', function(){
         var createList = document.createElement('ul');
         createDiv.appendChild(createList);
         document.body.appendChild(createDiv);
-        getElements('items').style.display = "block";
+        $("#items").css("display", "block");
         for (var i=0; i<localStorage.length; i++) {
             var createListItem = document.createElement('li');
             var newLinksLi = document.createElement('li');
