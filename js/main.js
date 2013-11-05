@@ -21,14 +21,14 @@ $('#saveditems').on('pageinit', function(){
     //Function to determine which check boxes are checked:
     function getSelectedCheckedBoxes() {
         if ($("#radio1").checked) {
-            fleaValue = $("#radio1").value;
+            radio1Val = $("#radio1").value;
         } else {
-            fleaValue = "No"
+            radio1Val = "No"
         };
         if ($("#radio2").checked){
-            heartwormValue = $("#radio2").value;
+            radio2Val = $("#radio2").value;
         } else {
-            heartwormValue = "No"
+            radio2Val = "No"
         };
     }
 
@@ -69,7 +69,7 @@ $('#saveditems').on('pageinit', function(){
             itemList.artist    = ["Artist's Name:", $("#artist").value];
             itemList.album     = ["Album Title:", $("#album").value];
             itemList.format    = ["Music Format:", $("#format").value];
-            itemList.list       = ["Which List:", fleaValue]; //Need to fix this to make sure it pulls radio button values.
+            itemList.list       = ["Which List:", radio1Val]; //Need to fix this to make sure it pulls radio button values.
             itemList.date       = ["Release Date:", $("#date").value];
             itemList.notes       = ["Notes:", $("#notes").value];
             
@@ -137,33 +137,46 @@ $('#saveditems').on('pageinit', function(){
     
 
     //Function to create edit/delete links for each stored item when displayed.
+    //function createEditDelLinks(key, newLinksLi) {
+    //    //add edit single item link
+    //    var editLink = document.createElement('a');
+    //    editLink.href = "#";
+    //    editLink.key = key;
+    //    var editText = "Edit Reminder";
+    //    editLink.on("click", editReminder);
+    //    editLink.innerHTML = editText;
+    //    newLinksLi.appendChild(editLink);
+    
+        //    //add line break
+        //var breakTag = document.createElement('br');
+        //newLinksLi.appendChild(breakTag);
+        
+        // //add delete single item link
+        //var deleteLink = document.createElement('a');
+        //deleteLink.href = "#";
+        //deleteLink.key = key;
+        //var deleteText = "Delete Reminder";
+        //deleteLink.on("click", deleteReminder);
+        //deleteLink.innerHTML = deleteText;
+        //newLinksLi.appendChild(deleteLink);
+
+        
+        
     function createEditDelLinks(key, newLinksLi) {
-        //add edit single item link
-        var editLink = document.createElement('a');
-        editLink.href = "#";
+        
+        var editLink = $('<a href="#">Edit Item</a>').appendTo("#savedcontent").on("click", editReminder);
         editLink.key = key;
-        var editText = "Edit Reminder";
-        editLink.on("click", editReminder);
-        editLink.innerHTML = editText;
-        newLinksLi.appendChild(editLink);
-        
-        
-        
-        
+        $(editLink).append(newLinksLi);
         
         //add line break
-        var breakTag = document.createElement('br');
-        newLinksLi.appendChild(breakTag);
+        var breakTag = $('br').appendTo("#savedcontent");
         
         //add delete single item link
-        var deleteLink = document.createElement('a');
-        deleteLink.href = "#";
-        deleteLink.key = key;
-        var deleteText = "Delete Reminder";
-        deleteLink.on("click", deleteReminder);
-        deleteLink.innerHTML = deleteText;
-        newLinksLi.appendChild(deleteLink);
+        var deleteLink = $('<a href="#">Delete Item</a>').appendTo("#savedcontent").on("click", deleteReminder);
+        $(deleteLink).append(newLinksLi);
+        
     }
+
     
     //Auto populate Local Storage with JSON data
     function getJsonData() {
@@ -296,8 +309,8 @@ $('#saveditems').on('pageinit', function(){
     //Variable Defaults
     var fleaMedication = ["--Type of Flea Medication--", "Topical", "Oral", "Sprayon"];
     var fleaCheckBox;
-    var fleaValue;
-    var heartwormValue;
+    var radio1Val;
+    var radio2Val;
     var otherValue;
     var error = getElements('errors');
     makeFleaMedOptions();
