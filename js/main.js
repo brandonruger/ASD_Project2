@@ -3,20 +3,12 @@
  * Project 2 */
 
 $('#home').on('pageinit', function(){
-	//code needed for home page goes here
+    //code needed for home page goes here
 });
 
 $('#addalbum').on('pageinit', function(){
-	//code needed for add album page goes here
-});
-
-$('#saveditems').on('pageinit', function(){
-	//code needed for saved items page goes here
-});
-
-/* Code to refactor */
-
     
+    //code needed for add album page goes here
     
     //Function to determine which check boxes are checked:
     function getSelectedCheckedBoxes() {
@@ -31,7 +23,8 @@ $('#saveditems').on('pageinit', function(){
             radio2Val = "No"
         };
     }
-
+    
+    //Function to hide form
     function toHideForm(n) {
         switch (n){
             case "on":
@@ -78,6 +71,23 @@ $('#saveditems').on('pageinit', function(){
             alert("Album has been added!");
     }
     
+    //Dynamically create Edit & Delete Links
+    function createEditDelLinks(key, newLinksLi) {
+        
+        var editLink = $('<a href="#">Edit Item</a>').appendTo("#addAlbumForm").on("click", editReminder);
+        editLink.key = key;
+        $(editLink).append(newLinksLi);
+        
+        //add line break
+        var breakTag = $('br').appendTo("#addAlbumForm");
+        
+        //add delete single item link
+        var deleteLink = $('<a href="#">Delete Item</a>').appendTo("#addAlbumForm").on("click", deleteReminder);
+        $(deleteLink).append(newLinksLi);
+        
+    }
+    
+    //Get Data from Local Storage
     function getDataFromStorage() {
         toHideForm("on");
         if (localStorage.length === 0) {
@@ -85,39 +95,8 @@ $('#saveditems').on('pageinit', function(){
             getJsonData();
         }
         
-        //Write Data from local storage to the browser
-        //var createDiv = document.createElement('div');
-        //createDiv.setAttribute("id", "items");
-        //var createList = document.createElement('ul');
-        //createDiv.appendChild(createList);
-        //document.body.appendChild(createDiv);
-        //$("#items").css("display", "block");
-        //for (var i=0; i<localStorage.length; i++) {
-        //    var createListItem = document.createElement('li');
-        //    var newLinksLi = document.createElement('li');
-        //    createList.appendChild(createListItem);
-            //var key = localStorage.key(i);
-            //var dataValue = localStorage.getItem(key);
-            ////Convert string from local storage back to an Object.
-            //var findObject = JSON.parse(dataValue);
-            //var subList = document.createElement('ul');
-            //createListItem.appendChild(subList);
-            //getIcon(findObject.fleaRx[1], subList);
-            //for (var n in findObject) {
-            //    var makeSublist = document.createElement('li');
-            //    subList.appendChild(makeSublist);
-                //var subText = findObject[n][0]+ " " +findObject[n][1];
-                //makeSublist.innerHTML = subText;
-    //            createListItem.appendChild(newLinksLi);
-    //        }
-    //        createEditDelLinks(localStorage.key(i), newLinksLi); //Create our edit and delete links for each item in local storage.
-    //        
-    //    }
-    //    
-    //}
-    
         //jQuery code to write data from local storage to the browser
-        $('<div id="items"><ul></ul></div>').appendTo("#savedcontent").css("display", "block");
+        $('<div id="items"><ul></ul></div>').appendTo("#addAlbumForm").css("display", "block");
         for (var i=0; i<localStorage.length; i++){
             var newListItem = $('<li></li>').appendTo("#items > ul");
             var key = localStorage.key(i);
@@ -133,52 +112,9 @@ $('#saveditems').on('pageinit', function(){
             createEditDelLinks(localStorage.key(i), newLinksLi); //Create our edit and delete links for each item in local storage.
 
         }
-    
-    
-
-    //Function to create edit/delete links for each stored item when displayed.
-    //function createEditDelLinks(key, newLinksLi) {
-    //    //add edit single item link
-    //    var editLink = document.createElement('a');
-    //    editLink.href = "#";
-    //    editLink.key = key;
-    //    var editText = "Edit Reminder";
-    //    editLink.on("click", editReminder);
-    //    editLink.innerHTML = editText;
-    //    newLinksLi.appendChild(editLink);
-    
-        //    //add line break
-        //var breakTag = document.createElement('br');
-        //newLinksLi.appendChild(breakTag);
-        
-        // //add delete single item link
-        //var deleteLink = document.createElement('a');
-        //deleteLink.href = "#";
-        //deleteLink.key = key;
-        //var deleteText = "Delete Reminder";
-        //deleteLink.on("click", deleteReminder);
-        //deleteLink.innerHTML = deleteText;
-        //newLinksLi.appendChild(deleteLink);
-
-        
-        
-    function createEditDelLinks(key, newLinksLi) {
-        
-        var editLink = $('<a href="#">Edit Item</a>').appendTo("#savedcontent").on("click", editReminder);
-        editLink.key = key;
-        $(editLink).append(newLinksLi);
-        
-        //add line break
-        var breakTag = $('br').appendTo("#savedcontent");
-        
-        //add delete single item link
-        var deleteLink = $('<a href="#">Delete Item</a>').appendTo("#savedcontent").on("click", deleteReminder);
-        $(deleteLink).append(newLinksLi);
-        
     }
-
     
-    //Auto populate Local Storage with JSON data
+        //Auto populate Local Storage with JSON data
     function getJsonData() {
         //Store JSON Object into Local Storage.
         for (var n in json) {
@@ -247,6 +183,99 @@ $('#saveditems').on('pageinit', function(){
         }
     }
     
+    //Variable Defaults
+    var radio1Val;
+    var radio2Val;
+    
+    //Set Link & Submit Click Events
+    
+    var displayData = $("#displayData");
+    displayData.on("click", getDataFromStorage);
+    var clearData = $("#clearData");
+    clearData.on("click", clearLocalStorage);
+    var createButton = $("#button");
+    createButton.on("click", validateInput);
+        
+});
+
+/* Code to refactor */
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+        
+        //Write Data from local storage to the browser
+        //var createDiv = document.createElement('div');
+        //createDiv.setAttribute("id", "items");
+        //var createList = document.createElement('ul');
+        //createDiv.appendChild(createList);
+        //document.body.appendChild(createDiv);
+        //$("#items").css("display", "block");
+        //for (var i=0; i<localStorage.length; i++) {
+        //    var createListItem = document.createElement('li');
+        //    var newLinksLi = document.createElement('li');
+        //    createList.appendChild(createListItem);
+            //var key = localStorage.key(i);
+            //var dataValue = localStorage.getItem(key);
+            ////Convert string from local storage back to an Object.
+            //var findObject = JSON.parse(dataValue);
+            //var subList = document.createElement('ul');
+            //createListItem.appendChild(subList);
+            //getIcon(findObject.fleaRx[1], subList);
+            //for (var n in findObject) {
+            //    var makeSublist = document.createElement('li');
+            //    subList.appendChild(makeSublist);
+                //var subText = findObject[n][0]+ " " +findObject[n][1];
+                //makeSublist.innerHTML = subText;
+    //            createListItem.appendChild(newLinksLi);
+    //        }
+    //        createEditDelLinks(localStorage.key(i), newLinksLi); //Create our edit and delete links for each item in local storage.
+    //        
+    //    }
+    //    
+    //}
+    
+        
+    
+    
+
+    //Function to create edit/delete links for each stored item when displayed.
+    //function createEditDelLinks(key, newLinksLi) {
+    //    //add edit single item link
+    //    var editLink = document.createElement('a');
+    //    editLink.href = "#";
+    //    editLink.key = key;
+    //    var editText = "Edit Reminder";
+    //    editLink.on("click", editReminder);
+    //    editLink.innerHTML = editText;
+    //    newLinksLi.appendChild(editLink);
+    
+        //    //add line break
+        //var breakTag = document.createElement('br');
+        //newLinksLi.appendChild(breakTag);
+        
+        // //add delete single item link
+        //var deleteLink = document.createElement('a');
+        //deleteLink.href = "#";
+        //deleteLink.key = key;
+        //var deleteText = "Delete Reminder";
+        //deleteLink.on("click", deleteReminder);
+        //deleteLink.innerHTML = deleteText;
+        //newLinksLi.appendChild(deleteLink);
+
+        
+        
+    
+
+    
+
+    
 //    function validateInput(eventData) {
 //        //Define the elements we want to check
 //        var getPetName = getElements('petname');
@@ -306,27 +335,13 @@ $('#saveditems').on('pageinit', function(){
 //
 //    }
     
-    //Variable Defaults
-    var fleaMedication = ["--Type of Flea Medication--", "Topical", "Oral", "Sprayon"];
-    var fleaCheckBox;
-    var radio1Val;
-    var radio2Val;
-    var otherValue;
-    var error = getElements('errors');
-    makeFleaMedOptions();
-    
-    //Set Link & Submit Click Events
-    
-    var displayData = $("#displayData");
-    displayData.on("click", getDataFromStorage);
-    var clearData = $("#clearData");
-    clearData.on("click", clearLocalStorage);
-    var createButton = $("#button");
-    createButton.on("click", validateInput);
-    
-    
-    
-    
-    
-});
 
+    
+    //var error = getElements('errors');
+    
+
+    
+    
+    
+    
+    
