@@ -128,7 +128,7 @@ $('#saveditems').on('pageinit', function(){
             for (var n in findObject) {
                 var makeNewSubList = $('<li></li>').appendTo(subList)
                 var subText = findObject[n][0]+ " " +findObject[n][1];
-                makeNewSubList.html(subText).append(newLinksLi);
+                makeNewSubList.html(subText);
             }
             createEditDelLinks(localStorage.key(i), newLinksLi); //Create our edit and delete links for each item in local storage.
 
@@ -143,7 +143,7 @@ $('#saveditems').on('pageinit', function(){
         editLink.href = "#";
         editLink.key = key;
         var editText = "Edit Reminder";
-        editLink.addEventListener("click", editReminder);
+        editLink.on("click", editReminder);
         editLink.innerHTML = editText;
         newLinksLi.appendChild(editLink);
         
@@ -160,7 +160,7 @@ $('#saveditems').on('pageinit', function(){
         deleteLink.href = "#";
         deleteLink.key = key;
         var deleteText = "Delete Reminder";
-        deleteLink.addEventListener("click", deleteReminder);
+        deleteLink.on("click", deleteReminder);
         deleteLink.innerHTML = deleteText;
         newLinksLi.appendChild(deleteLink);
     }
@@ -200,14 +200,14 @@ $('#saveditems').on('pageinit', function(){
         $("#notes").value = itemList.notes[1];
         
         //Remove the initial listener from the imput 'create reminder' button.
-        createButton.removeEventListener("click", validateInput);
+        createButton.off("click", validateInput);
         //Change Submit button value to Edit button
         $("#saveAlbumButton").value = "Update Album";
         var changeButton = $("#saveAlbumButton");
         
         //Save the key value established in this function as a property of the editSubmit event.
         //So that we can use that value when we save the data we edited.
-        changeButton.addEventListener("click", validateInput);
+        changeButton.on("click", validateInput);
         changeButton.key = this.key;
         
     }
@@ -305,11 +305,11 @@ $('#saveditems').on('pageinit', function(){
     //Set Link & Submit Click Events
     
     var displayData = $("#displayData");
-    displayData.addEventListener("click", getDataFromStorage);
+    displayData.on("click", getDataFromStorage);
     var clearData = $("#clearData");
-    clearData.addEventListener("click", clearLocalStorage);
+    clearData.on("click", clearLocalStorage);
     var createButton = $("#button");
-    createButton.addEventListener("click", validateInput);
+    createButton.on("click", validateInput);
     
     
     
