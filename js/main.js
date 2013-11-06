@@ -73,18 +73,18 @@ $('#addalbum').on('pageinit', function(){
     }
     
     //Dynamically create Edit & Delete Links
-    function createEditDelLinks(key, newLinksLi) {
+    function createEditDelLinks(key, newListItem) {
         
-        var editLink = $('<a href="#">Edit Item</a>').appendTo("#addAlbumForm").on("click", editReminder);
+        var editLink = $('<ul><li><a href="#">Edit Item</a></li></ul>').appendTo("#addAlbumForm").on("click", editReminder);
         editLink.key = key;
-        $(editLink).append(newLinksLi);
+        $(editLink).append(newListItem);
         
         //add line break
         var breakTag = $('br').appendTo("#addAlbumForm");
         
         //add delete single item link
-        var deleteLink = $('<a href="#">Delete Item</a>').appendTo("#addAlbumForm").on("click", deleteReminder);
-        $(deleteLink).append(newLinksLi);
+        var deleteLink = $('<ul><li><a href="#">Delete Item</a></li></ul>').appendTo("#addAlbumForm").on("click", deleteReminder);
+        $(deleteLink).append(newListItem);
         
     }
     
@@ -130,21 +130,21 @@ $('#addalbum').on('pageinit', function(){
         var itemList = JSON.parse(lsData);
         
         //Show the form
-        toHideForm("off");
+        //toHideForm("off");
         
         //Populate form fields with current localStorage values.
         $("#artist").value = itemList.artist[1];
         $("#album").value = itemList.album[1];
         $("#format").value = itemList.format[1];
 
-        if(itemList.radio1[1] == "current-collection") {
-            $("#radio1").attr("checked", "checked");
-        }
-                
-        if (itemList.radio2[1] == "wish-list") {
-            $("#radio2").attr("checked", "checked");
-            
-        }
+        //if(itemList.radio1[1] == "current-collection") {
+        //    $("#radio1").attr("checked", "checked");
+        //}
+        //        
+        //if (itemList.radio2[1] == "wish-list") {
+        //    $("#radio2").attr("checked", "checked");
+        //    
+        //}
                 
         $("#date").value = itemList.date[1];
         $("#notes").value = itemList.notes[1];
@@ -222,7 +222,7 @@ $('#addalbum').on('pageinit', function(){
         //$("#items").css("display", "block");
         //for (var i=0; i<localStorage.length; i++) {
         //    var createListItem = document.createElement('li');
-        //    var newLinksLi = document.createElement('li');
+        //    var newListItem = document.createElement('li');
         //    createList.appendChild(createListItem);
             //var key = localStorage.key(i);
             //var dataValue = localStorage.getItem(key);
@@ -236,9 +236,9 @@ $('#addalbum').on('pageinit', function(){
             //    subList.appendChild(makeSublist);
                 //var subText = findObject[n][0]+ " " +findObject[n][1];
                 //makeSublist.innerHTML = subText;
-    //            createListItem.appendChild(newLinksLi);
+    //            createListItem.appendChild(newListItem);
     //        }
-    //        createEditDelLinks(localStorage.key(i), newLinksLi); //Create our edit and delete links for each item in local storage.
+    //        createEditDelLinks(localStorage.key(i), newListItem); //Create our edit and delete links for each item in local storage.
     //        
     //    }
     //    
@@ -249,7 +249,7 @@ $('#addalbum').on('pageinit', function(){
     
 
     //Function to create edit/delete links for each stored item when displayed.
-    //function createEditDelLinks(key, newLinksLi) {
+    //function createEditDelLinks(key, newListItem) {
     //    //add edit single item link
     //    var editLink = document.createElement('a');
     //    editLink.href = "#";
@@ -257,11 +257,11 @@ $('#addalbum').on('pageinit', function(){
     //    var editText = "Edit Reminder";
     //    editLink.on("click", editReminder);
     //    editLink.innerHTML = editText;
-    //    newLinksLi.appendChild(editLink);
+    //    newListItem.appendChild(editLink);
     
         //    //add line break
         //var breakTag = document.createElement('br');
-        //newLinksLi.appendChild(breakTag);
+        //newListItem.appendChild(breakTag);
         
         // //add delete single item link
         //var deleteLink = document.createElement('a');
@@ -270,7 +270,7 @@ $('#addalbum').on('pageinit', function(){
         //var deleteText = "Delete Reminder";
         //deleteLink.on("click", deleteReminder);
         //deleteLink.innerHTML = deleteText;
-        //newLinksLi.appendChild(deleteLink);
+        //newListItem.appendChild(deleteLink);
 
         
         
