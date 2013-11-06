@@ -109,7 +109,7 @@ $('#addalbum').on('pageinit', function(){
                 var subText = findObject[n][0]+ " " +findObject[n][1];
                 makeNewSubList.html(subText);
             }
-            createEditDelLinks(localStorage.key(i), newLinksLi); //Create our edit and delete links for each item in local storage.
+            createEditDelLinks(localStorage.key(i), newListItem); //Create our edit and delete links for each item in local storage.
 
         }
     }
