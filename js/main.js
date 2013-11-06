@@ -11,18 +11,18 @@ $('#addalbum').on('pageinit', function(){
     //code needed for add album page goes here
     
     //Function to determine which check boxes are checked:
-    function getSelectedCheckedBoxes() {
-        if ($("#radio1").checked) {
-            radio1Val = $("#radio1").value;
-        } else {
-            radio1Val = "No"
-        };
-        if ($("#radio2").checked){
-            radio2Val = $("#radio2").value;
-        } else {
-            radio2Val = "No"
-        };
-    }
+    //function getSelectedCheckedBoxes() {
+    //    if ($("#radio1").checked) {
+    //        radio1Val = $("#radio1").value;
+    //    } else {
+    //        radio1Val = "No"
+    //    };
+    //    if ($("#radio2").checked){
+    //        radio2Val = $("#radio2").value;
+    //    } else {
+    //        radio2Val = "No"
+    //    };
+    //}
     
     //Function to hide form
     function toHideForm(n) {
@@ -59,12 +59,12 @@ $('#addalbum').on('pageinit', function(){
         //Object properties contain array with the form label and input value.
         getSelectedCheckedBoxes(); 
         var itemList            = {};
-            itemList.artist    = ["Artist's Name:", $("#artist").value];
-            itemList.album     = ["Album Title:", $("#album").value];
-            itemList.format    = ["Music Format:", $("#format").value];
-            itemList.list       = ["Which List:", radio1Val]; //Need to fix this to make sure it pulls radio button values.
-            itemList.date       = ["Release Date:", $("#date").value];
-            itemList.notes       = ["Notes:", $("#notes").value];
+            itemList.artist    = $("#artist").val();
+            itemList.album     = $("#album").val();
+            itemList.format    = $("#format").val();
+            //itemList.list      = ["Which List:", radio1Val]; //Need to fix this to make sure it pulls radio button values.
+            itemList.date      = $("#date").val();
+            itemList.notes     = $("#notes").val();
             
             //Save data into Local Storage
             localStorage.setItem(generateId, JSON.stringify(itemList));
