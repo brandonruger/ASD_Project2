@@ -193,8 +193,8 @@ $('#addalbum').on('pageinit', function(){
     displayData.on("click", getDataFromStorage);
     var clearData = $("#clearData");
     clearData.on("click", clearLocalStorage);
-    var createButton = $("#button");
-    createButton.on("click", validateInput);
+    //var createButton = $("#button");
+    //createButton.on("click", validateInput);
         
 });
 
