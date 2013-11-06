@@ -26,25 +26,25 @@ $('#addalbum').on('pageinit', function(){
     
     //Function to hide form
         
-    function toHideForm(n) {
-        switch (n){
-            case "on":
-                $("#addAlbumForm").css("display", "none");
-                $("#clearData").css("display", "inline");
-                $("#displayData").css("display", "none");
-                $("#addNewReminder").css("display", "inline");
-                break;
-            case "off":
-                $("#addAlbumForm").css("display", "block");
-                $("#clearData").css("display", "inline");
-                $("#displayData").css("display", "inline");
-                $("#addNewReminder").css("display", "none");
-                $("#items").css("display", "none");
-                break;
-            default:
-                return false;
-        }
-    }
+    //function toHideForm(n) {
+    //    switch (n){
+    //        case "on":
+    //            $("#addAlbumForm").css("display", "none");
+    //            $("#clearData").css("display", "inline");
+    //            $("#displayData").css("display", "none");
+    //            $("#addNewReminder").css("display", "inline");
+    //            break;
+    //        case "off":
+    //            $("#addAlbumForm").css("display", "block");
+    //            $("#clearData").css("display", "inline");
+    //            $("#displayData").css("display", "inline");
+    //            $("#addNewReminder").css("display", "none");
+    //            $("#items").css("display", "none");
+    //            break;
+    //        default:
+    //            return false;
+    //    }
+    //}
     
     //Create function to submit data.
     function submitData(key) {
@@ -90,14 +90,14 @@ $('#addalbum').on('pageinit', function(){
     
     //Get Data from Local Storage
     function getDataFromStorage() {
-        toHideForm("on");
+        //toHideForm("on");
         if (localStorage.length === 0) {
             alert("There is no data in Local Storage so default data was added.");
             getJsonData();
         }
         
         //jQuery code to write data from local storage to the browser
-        $('<div id="items"><ul></ul></div>').appendTo("#addAlbumForm").css("display", "block");
+        $('<div id="items"><ul></ul></div>').appendTo("#addalbum").css("display", "block");
         for (var i=0; i<localStorage.length; i++){
             var newListItem = $('<li></li>').appendTo("#items > ul");
             var key = localStorage.key(i);
