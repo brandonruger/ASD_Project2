@@ -25,6 +25,7 @@ $('#addalbum').on('pageinit', function(){
     //}
     
     //Function to hide form
+        
     function toHideForm(n) {
         switch (n){
             case "on":
@@ -57,7 +58,6 @@ $('#addalbum').on('pageinit', function(){
         
         //Gather up all our form field values and store in an object.
         //Object properties contain array with the form label and input value.
-        getSelectedCheckedBoxes(); 
         var itemList            = {};
             itemList.artist    = $("#artist").val();
             itemList.album     = $("#album").val();
@@ -69,6 +69,7 @@ $('#addalbum').on('pageinit', function(){
             //Save data into Local Storage
             localStorage.setItem(generateId, JSON.stringify(itemList));
             alert("Album has been added!");
+            console.log(localStorage);
     }
     
     //Dynamically create Edit & Delete Links
@@ -193,6 +194,8 @@ $('#addalbum').on('pageinit', function(){
     displayData.on("click", getDataFromStorage);
     var clearData = $("#clearData");
     clearData.on("click", clearLocalStorage);
+    var saveData = $("#saveAlbumButton");
+    saveData.on("click", submitData);
     //var createButton = $("#button");
     //createButton.on("click", validateInput);
         
