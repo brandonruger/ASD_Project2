@@ -58,7 +58,7 @@ $('#addalbum').on('pageinit', function(){
         
         //Gather up all our form field values and store in an object.
         //Object properties contain array with the form label and input value.
-        var itemList            = {};
+        var itemList           = {};
             itemList.artist    = $("#artist").val();
             itemList.album     = $("#album").val();
             itemList.format    = $("#format").val();
@@ -69,24 +69,9 @@ $('#addalbum').on('pageinit', function(){
             //Save data into Local Storage
             localStorage.setItem(generateId, JSON.stringify(itemList));
             alert("Album has been added!");
-            console.log(localStorage);
     }
     
-    //Dynamically create Edit & Delete Links
-    function createEditDelLinks(key, newListItem) {
-        
-        var editLink = $('<ul><li><a href="#">Edit Item</a></li></ul>').appendTo("#addAlbumForm").on("click", editReminder);
-        editLink.key = key;
-        $(editLink).append(newListItem);
-        
-        //add line break
-        var breakTag = $('br').appendTo("#addAlbumForm");
-        
-        //add delete single item link
-        var deleteLink = $('<ul><li><a href="#">Delete Item</a></li></ul>').appendTo("#addAlbumForm").on("click", deleteReminder);
-        $(deleteLink).append(newListItem);
-        
-    }
+
     
     //Get Data from Local Storage
     function getDataFromStorage() {
@@ -115,6 +100,22 @@ $('#addalbum').on('pageinit', function(){
         }
     }
     
+        //Dynamically create Edit & Delete Links
+    function createEditDelLinks(key, newListItem) {
+        var editLink = $('<ul><li><a href="#">Edit Item</a></li></ul>').appendTo("#addAlbumForm").on("click", editReminder);
+        editLink.key = key;
+        $(editLink).append(newListItem);
+        
+        //add line break
+        var breakTag = $('br').appendTo("#addAlbumForm");
+        
+        //add delete single item link
+        var deleteLink = $('<ul><li><a href="#">Delete Item</a></li></ul>').appendTo("#addAlbumForm").on("click", deleteReminder);
+        deleteLink.key = key;
+        $(deleteLink).append(newListItem);
+        
+    }
+    
         //Auto populate Local Storage with JSON data
     function getJsonData() {
         //Store JSON Object into Local Storage.
@@ -125,17 +126,20 @@ $('#addalbum').on('pageinit', function(){
     }
     
     function editReminder() {
+        console.log(this.key);
         //Grab the data from our item from Local Storage.
         var lsData = localStorage.getItem(this.key);
+        console.log(lsData);
         var itemList = JSON.parse(lsData);
+        console.log(itemList);
         
         //Show the form
         //toHideForm("off");
         
         //Populate form fields with current localStorage values.
-        $("#artist").value = itemList.artist[1];
-        $("#album").value = itemList.album[1];
-        $("#format").value = itemList.format[1];
+        $("#artist").val(itemList.artist[1]);
+        $("#album").val(itemList.album[1]);
+        $("#format").val(itemList.format[1]);
 
         //if(itemList.radio1[1] == "current-collection") {
         //    $("#radio1").attr("checked", "checked");
@@ -146,18 +150,18 @@ $('#addalbum').on('pageinit', function(){
         //    
         //}
                 
-        $("#date").value = itemList.date[1];
-        $("#notes").value = itemList.notes[1];
+        $("#date").val(itemList.date[1]);
+        $("#notes").val(itemList.notes[1]);
         
         //Remove the initial listener from the imput 'create reminder' button.
-        createButton.off("click", validateInput);
+        //createButton.off("click", validateInput);
         //Change Submit button value to Edit button
-        $("#saveAlbumButton").value = "Update Album";
+        $("#saveAlbumButton").val("Update Album");
         var changeButton = $("#saveAlbumButton");
         
         //Save the key value established in this function as a property of the editSubmit event.
         //So that we can use that value when we save the data we edited.
-        changeButton.on("click", validateInput);
+        changeButton.on("click", submitData);
         changeButton.key = this.key;
         
     }
