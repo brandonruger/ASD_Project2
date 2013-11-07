@@ -59,8 +59,8 @@ $('#addalbum').on('pageinit', function(){
     
 
     
-    //Get Data from Local Storage
-    function getDataFromStorage() {
+    //Get JSON Data
+    function getJsonDataFromStorage() {
         //toHideForm("on");
         if (localStorage.length === 0) {
             alert("There is no data in Local Storage so default data was added.");
@@ -85,6 +85,32 @@ $('#addalbum').on('pageinit', function(){
 
         }
     }
+    
+    //    function getXmlDataFromStorage() {
+    //    //toHideForm("on");
+    //    if (localStorage.length === 0) {
+    //        alert("There is no data in Local Storage so default data was added.");
+    //        getJsonData();
+    //    }
+    //    
+    //    //jQuery code to write data from local storage to the browser
+    //    $('<div id="items"><ul></ul></div>').appendTo("#addalbum").css("display", "block");
+    //    for (var i=0; i<localStorage.length; i++){
+    //        var newListItem = $('<li></li>').appendTo("#items > ul");
+    //        var key = localStorage.key(i);
+    //        var dataValue = localStorage.getItem(key);
+    //        //Convert string from local storage back to an object.
+    //        var findObject = JSON.parse(dataValue);
+    //        var subList = $('<ul></ul>').appendTo(newListItem);
+    //        for (var n in findObject) {
+    //            var makeNewSubList = $('<li></li>').appendTo(subList)
+    //            var subText = findObject[n][0]+ " " +findObject[n][1];
+    //            makeNewSubList.html(subText);
+    //        }
+    //        createEditDelLinks(localStorage.key(i), newListItem); //Create our edit and delete links for each item in local storage.
+    //
+    //    }
+    //}
     
         //Dynamically create Edit & Delete Links
     function createEditDelLinks(key, newListItem) {
