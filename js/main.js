@@ -174,6 +174,18 @@ $('#addalbum').on('pageinit', function(){
             return false;
         }
     }
+    function getJsonDataFromStorage(){
+            
+        $("#addAlbumForm").empty();
+        $.ajax({
+            url: 'xhr/json.js',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response){
+                console.log(response);
+            }
+        })
+    }
     
     //Variable Defaults
     var radio1Val;
@@ -182,9 +194,9 @@ $('#addalbum').on('pageinit', function(){
     //Set Link & Submit Click Events
     
     var displayJsonData = $("#displayJson");
-    displayJsonData.on("click", getDataFromStorage);
+    displayJsonData.on("click", getJsonDataFromStorage);
     var displayXmlData = $("#displayXml");
-    displayXmlData.on("click", getDataFromStorage);
+    displayXmlData.on("click", getXmlDataFromStorage);
     var clearData = $("#clearData");
     clearData.on("click", clearLocalStorage);
     var saveData = $("#saveAlbumButton");
