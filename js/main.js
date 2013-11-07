@@ -10,20 +10,6 @@ $('#addalbum').on('pageinit', function(){
     
     //code needed for add album page goes here
     
-    //Function to determine which check boxes are checked:
-    //function getSelectedCheckedBoxes() {
-    //    if ($("#radio1").checked) {
-    //        radio1Val = $("#radio1").value;
-    //    } else {
-    //        radio1Val = "No"
-    //    };
-    //    if ($("#radio2").checked){
-    //        radio2Val = $("#radio2").value;
-    //    } else {
-    //        radio2Val = "No"
-    //    };
-    //}
-    
     //Function to hide form
         
     //function toHideForm(n) {
@@ -195,8 +181,10 @@ $('#addalbum').on('pageinit', function(){
     
     //Set Link & Submit Click Events
     
-    var displayData = $("#displayData");
-    displayData.on("click", getDataFromStorage);
+    var displayJsonData = $("#displayJson");
+    displayJsonData.on("click", getDataFromStorage);
+    var displayXmlData = $("#displayXml");
+    displayXmlData.on("click", getDataFromStorage);
     var clearData = $("#clearData");
     clearData.on("click", clearLocalStorage);
     var saveData = $("#saveAlbumButton");
@@ -284,68 +272,7 @@ $('#addalbum').on('pageinit', function(){
     
 
     
-//    function validateInput(eventData) {
-//        //Define the elements we want to check
-//        var getPetName = getElements('petname');
-//        var getPetAge = getElements('petage');
-//        var getPetType = getElements('pettype');
-//        
-//        //Reset Error Messages
-//        error.innerHTML = "";
-//        getPetName.style.border = "1px solid black";
-//        getPetAge.style.border = "1px solid black";
-//        getPetType.style.border = "1px solid black";
-//        
-//        
-//        //Get Error Messages
-//        var errorMessagesArray = [];
-//        
-//        //Pet Name Validation
-//        if (getPetName.value === "") {
-//            var nameError = "Please enter your pet's name.";
-//            getPetName.style.border = "2px solid red";
-//            errorMessagesArray.push(nameError);
-//        }
-//        
-//        
-//        //Pet Age Validation
-//        var re = /^\d{1,2}$/;
-//        if (!(re.exec(getPetAge.value))){
-//            var ageError = "Please enter your pet's numerical age.";
-//            getPetAge.style.border = "2px solid red";
-//            errorMessagesArray.push(ageError);
-//        }
-//        
-//        
-//        //Pet Type Validation
-//        if (getPetType.value === ""){
-//            var typeError = "Please enter your pet's type.";
-//            getPetType.style.border = "2px solid red";
-//            errorMessagesArray.push(typeError);
-//        }
-//        
-//        //If there were errors, display them on screen.
-//        if (errorMessagesArray.length >= 1) {
-//            for (var i=0, j=errorMessagesArray.length; i<j; i++) {
-//                var txt = document.createElement('li');
-//                txt.innerHTML = errorMessagesArray[i];
-//                error.appendChild(txt);
-//;            }
-//
-//            eventData.preventDefault();
-//            return false;
-//        } else{
-//            //If all is OK, save our data!
-//            //Send key value which came from edit function.
-//            //Remember this key value was passed through the event Listener as a property.
-//            submitData(this.key);
-//        }
-//
-//    }
-    
 
-    
-    //var error = getElements('errors');
     
 
     
