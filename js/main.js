@@ -60,31 +60,32 @@ $('#addalbum').on('pageinit', function(){
 
     
     //Get JSON Data
-    function getJsonDataFromStorage() {
-        //toHideForm("on");
-        if (localStorage.length === 0) {
-            alert("There is no data in Local Storage so default data was added.");
-            getJsonData();
-        }
-        
-        //jQuery code to write data from local storage to the browser
-        $('<div id="items"><ul></ul></div>').appendTo("#addalbum").css("display", "block");
-        for (var i=0; i<localStorage.length; i++){
-            var newListItem = $('<li></li>').appendTo("#items > ul");
-            var key = localStorage.key(i);
-            var dataValue = localStorage.getItem(key);
-            //Convert string from local storage back to an object.
-            var findObject = JSON.parse(dataValue);
-            var subList = $('<ul></ul>').appendTo(newListItem);
-            for (var n in findObject) {
-                var makeNewSubList = $('<li></li>').appendTo(subList)
-                var subText = findObject[n][0]+ " " +findObject[n][1];
-                makeNewSubList.html(subText);
-            }
-            createEditDelLinks(localStorage.key(i), newListItem); //Create our edit and delete links for each item in local storage.
-
-        }
-    }
+    //function getJsonDataFromStorage() {
+    //    console.log("This function is running");
+    //    //toHideForm("on");
+    //    if (localStorage.length === 0) {
+    //        alert("There is no data in Local Storage so default data was added.");
+    //        console.log("no data in local storage");
+    //    }
+    //    
+    //    //jQuery code to write data from local storage to the browser
+    //    $('<div id="items"><ul>Display Data</ul></div>').appendTo("#addAlbumForm").css("display", "block");
+    //    for (var i=0; i<localStorage.length; i++){
+    //        var newListItem = $('<li></li>').appendTo("#items > ul");
+    //        var key = localStorage.key(i);
+    //        var dataValue = localStorage.getItem(key);
+    //        //Convert string from local storage back to an object.
+    //        var findObject = JSON.parse(dataValue);
+    //        var subList = $('<ul></ul>').appendTo(newListItem);
+    //        for (var n in findObject) {
+    //            var makeNewSubList = $('<li></li>').appendTo(subList)
+    //            var subText = findObject[n][0]+ " " +findObject[n][1];
+    //            makeNewSubList.html(subText);
+    //        }
+    //        createEditDelLinks(localStorage.key(i), newListItem); //Create our edit and delete links for each item in local storage.
+    //
+    //    }
+    //}
     
     //    function getXmlDataFromStorage() {
     //    //toHideForm("on");
@@ -129,14 +130,14 @@ $('#addalbum').on('pageinit', function(){
         
     }
     
-        //Auto populate Local Storage with JSON data
-    function getJsonData() {
-        //Store JSON Object into Local Storage.
-        for (var n in json) {
-            var id = Math.floor(Math.random()*10000001);
-            localStorage.setItem(id, JSON.stringify(json[n]));
-        }
-    }
+    //    //Auto populate Local Storage with JSON data
+    //function saveJsonToLocalStorage() {
+    //    //Store JSON Object into Local Storage.
+    //    for (var n in json) {
+    //        var id = Math.floor(Math.random()*10000001);
+    //        localStorage.setItem(id, JSON.stringify(json[n]));
+    //    }
+    //}
     
     function editReminder() {
         console.log(this.key);
@@ -201,6 +202,7 @@ $('#addalbum').on('pageinit', function(){
         }
     }
     function getJsonDataFromStorage(){
+        console.log("Ajax function is attempting to run");
             
         $("#addAlbumForm").empty();
         $.ajax({
@@ -221,8 +223,8 @@ $('#addalbum').on('pageinit', function(){
     
     var displayJsonData = $("#displayJson");
     displayJsonData.on("click", getJsonDataFromStorage);
-    var displayXmlData = $("#displayXml");
-    displayXmlData.on("click", getXmlDataFromStorage);
+    //var displayXmlData = $("#displayXml");
+    //displayXmlData.on("click", getXmlDataFromStorage);
     var clearData = $("#clearData");
     clearData.on("click", clearLocalStorage);
     var saveData = $("#saveAlbumButton");
