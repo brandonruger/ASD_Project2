@@ -105,6 +105,7 @@ $('#addalbum').on('pageinit', function(){
         var editLink = $('<ul><li><a href="#">Edit Item</a></li></ul>').appendTo("#addAlbumForm").on("click", editReminder);
         editLink.key = key;
         $(editLink).append(newListItem);
+        console.log(editLink.key);
         
         //add line break
         var breakTag = $('br').appendTo("#addAlbumForm");
