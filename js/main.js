@@ -57,7 +57,6 @@ $('#jsonpage').on('pageinit', function(){
             success: function(data, status){
                 console.log(data, status)
                 console.log(data);
-                console.log(obj);
                 $(data).each(function(){
                     $(' '+
                         '<div class=albums">'+
@@ -96,17 +95,17 @@ $('#xmlpage').on('pageinit', function(){
             success: function(xml){
                 var albums = $(xml);
                 console.log("Artist's Name", albums.find("artist"));
-                console.log(albums.find("artist")[1]);
+                console.log(albums.find("artist").text());
                 for (var i=0; i<5; i++) {
                 
                     $(' '+
                         '<div class=albums">'+
                             '<ul>'+
-                                '<li>'+ albums.find("artist")[i] +'</li>'+
-                                '<li>'+ albums.find("album")[i] +'</li>'+
-                                '<li>'+ albums.find("format")[i] +'</li>'+
-                                '<li>'+ albums.find("release")[i] +'</li>'+
-                                '<li>'+ albums.find("notes")[i] +'</li>'+
+                                '<li>'+ albums.find("artist").text() +'</li>'+
+                                '<li>'+ albums.find("album").text() +'</li>'+
+                                '<li>'+ albums.find("format").text() +'</li>'+
+                                '<li>'+ albums.find("release").text() +'</li>'+
+                                '<li>'+ albums.find("notes").text() +'</li>'+
                             '</ul>'+
                         '</div>'
                     ).appendTo('#xmlcontent');
