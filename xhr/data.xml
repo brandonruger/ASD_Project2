@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <albums>
-    <album1>
+    <album>
         <artist>Macklemore</artist>
         <title>The Heist</title>
         <format>CD</format>
         <release>Nov 23, 2012</release>
         <notes>This is a great album</notes>
-    </album1>
-    <album2>
+    </album>
+    <album>
         <artist>Tamar Braxton</artist>
         <title>Love and War</title>
         <format>CD</format>
         <release>Aug 11, 2013</release>
         <notes>Toni Braxton's sister</notes>
-    </album2>
-    <album3>
+    </album>
+    <album>
         <artist>Cher</artist>
         <title>Closer To The Truth</title>
         <format>Mp3</format>
         <release>Nov 5, 2013</release>
         <notes>One of my favorite Cher albums</notes>
-    </album3>
-    <album4>
+    </album>
+    <album>
         <artist>Demi Lovato</artist>
         <title>Demi</title>
         <format>CD</format>
         <release>Feb 5, 2013</release>
         <notes>Need to see her in concert</notes>
-    </album4>
-    <album5>
+    </album>
+    <album>
         <artist>Carrie Underwood</artist>
         <title>Blown Away</title>
         <format>CD</format>
         <release>Oct 10, 2012</release>
         <notes>My favorite country artist</notes>
-    </album5>
+    </album>
 </albums>

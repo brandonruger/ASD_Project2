@@ -57,7 +57,7 @@ $('#jsonpage').on('pageinit', function(){
             success: function(data, status){
                 console.log(data, status)
                 console.log(data);
-                console.log(data.album);
+                console.log(obj);
                 $(data).each(function(){
                     $(' '+
                         '<div class=albums">'+
@@ -93,30 +93,32 @@ $('#xmlpage').on('pageinit', function(){
             url: 'xhr/data.xml',
             type: 'GET',
             dataType: 'xml',
-            success: function(data, status){
-                console.log(data, status)
-                console.log(data);
-                console.log(data.album);
-                $(data).each(function(){
+            success: function(xml){
+                var albums = $(xml);
+                console.log("Artist's Name", albums.find("artist"));
+                console.log(albums.find("artist")[1]);
+                for (var i=0; i<5; i++) {
+                
                     $(' '+
                         '<div class=albums">'+
                             '<ul>'+
-                                '<li>'+ data.album.artist +'</li>'+
-                                '<li>'+ data.album.album +'</li>'+
-                                '<li>'+ data.album.format +'</li>'+
-                                '<li>'+ data.album.date +'</li>'+
-                                '<li>'+ data.album.notes +'</li>'+
+                                '<li>'+ albums.find("artist")[i] +'</li>'+
+                                '<li>'+ albums.find("album")[i] +'</li>'+
+                                '<li>'+ albums.find("format")[i] +'</li>'+
+                                '<li>'+ albums.find("release")[i] +'</li>'+
+                                '<li>'+ albums.find("notes")[i] +'</li>'+
                             '</ul>'+
                         '</div>'
                     ).appendTo('#xmlcontent');
-                });
+                }
             },
+        
             error: function(error, parseerror){
-                console.log(error, parseerror)
+                console.log(error, parseerror);
             }
         })
     }
-    
+
     var displayXmlData = $("#xmlbutton");
     displayXmlData.on("click", getXmlDataFromAjax);
 });
