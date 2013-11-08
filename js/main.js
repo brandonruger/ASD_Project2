@@ -26,7 +26,6 @@ $('#addalbum').on('pageinit', function(){
             itemList.artist    = $("#artist").val();
             itemList.album     = $("#album").val();
             itemList.format    = $("#format").val();
-            //itemList.list      = ["Which List:", radio1Val]; //Need to fix this to make sure it pulls radio button values.
             itemList.date      = $("#date").val();
             itemList.notes     = $("#notes").val();
             
