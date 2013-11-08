@@ -53,15 +53,32 @@ $('#jsonpage').on('pageinit', function(){
     
     //Retrieve JSON data from Ajax
     
-    function getJsonDataFromStorage(){
-        console.log("Ajax function is attempting to run");    
+    function getJsonDataFromAjax(){
         $("#jsoncontent").empty();
         $.ajax({
-            url: 'xhr/json.js',
+            url: 'xhr/data.json',
             type: 'GET',
             dataType: 'json',
             success: function(data, status){
-                console.log("data - " + data, status);
+                console.log(data, status)
+                console.log(data);
+                console.log(data.album);
+                $(data).each(function(){
+                    $(' '+
+                        '<div class=albums">'+
+                            '<ul>'+
+                                '<li>'+ data.album.artist +'</li>'+
+                                '<li>'+ data.album.album +'</li>'+
+                                '<li>'+ data.album.format +'</li>'+
+                                '<li>'+ data.album.date +'</li>'+
+                                '<li>'+ data.album.notes +'</li>'+
+                            '</ul>'+
+                        '</div>'
+                    ).appendTo('#jsoncontent');
+                });
+            },
+            error: function(error, parseerror){
+                console.log(error, parseerror)
             }
         })
     }
@@ -139,7 +156,7 @@ $('#jsonpage').on('pageinit', function(){
 
     
     var displayJsonData = $("#jsonbutton");
-    displayJsonData.on("click", getJsonDataFromStorage);
+    displayJsonData.on("click", getJsonDataFromAjax);
     var clearData = $("#clearData");
     clearData.on("click", clearLocalStorage);
 });
