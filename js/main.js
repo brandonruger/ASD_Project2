@@ -37,14 +37,9 @@ $('#addalbum').on('pageinit', function(){
     
     //Set Link & Submit Click Events
     
-    
-    //var displayXmlData = $("#displayXml");
-    //displayXmlData.on("click", getXmlDataFromStorage);
-
     var saveData = $("#saveAlbumButton");
     saveData.on("click", submitData);
-    //var createButton = $("#button");
-    //createButton.on("click", validateInput);
+
         
 });
 
@@ -129,6 +124,32 @@ $('#xmlpage').on('pageinit', function(){
 $('#localstoragepage').on('pageinit', function(){
     //code needed for home page goes here
     
+    function getDataFromLocalStorage() {
+        if (localStorage.length === 0) {
+            alert("There is no data in Local Storage so default data was added.");
+            getLsData();
+        }
+        
+        //jQuery code to write data from local storage to the browser
+        $('<div id="items"><ul></ul></div>').appendTo("#addalbum").css("display", "block");
+        for (var i=0; i<localStorage.length; i++){
+            var newListItem = $('<li></li>').appendTo("#items > ul");
+            var key = localStorage.key(i);
+            var dataValue = localStorage.getItem(key);
+            //Convert string from local storage back to an object.
+            var findObject = JSON.parse(dataValue);
+            var subList = $('<ul></ul>').appendTo(newListItem);
+            for (var n in findObject) {
+                var makeNewSubList = $('<li></li>').appendTo(subList)
+                var subText = findObject[n][0]+ " " +findObject[n][1];
+                makeNewSubList.html(subText);
+            }
+            createEditDelLinks(localStorage.key(i), newListItem); //Create our edit and delete links for each item in local storage.
+    
+        }
+    }
+
+    
     //Dynamically create Edit & Delete Links
     function createEditDelLinks(key, newListItem) {
         var editLink = $('<ul><li><a href="#">Edit Item</a></li></ul>').appendTo("#jsoncontent").on("click", editReminder);
@@ -196,6 +217,15 @@ $('#localstoragepage').on('pageinit', function(){
             alert("All Reminders have been deleted!");
             window.location.reload();
             return false;
+        }
+    }
+    
+        //Auto populate Local Storage with data
+    function getLsData() {
+        //Store JSON Object into Local Storage.
+        for (var n in localStorageData) {
+            var id = Math.floor(Math.random()*10000001);
+            localStorage.setItem(id, JSON.stringify(json[n]));
         }
     }
     
