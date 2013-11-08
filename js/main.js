@@ -131,7 +131,7 @@ $('#localstoragepage').on('pageinit', function(){
         }
         
         //jQuery code to write data from local storage to the browser
-        $('<div id="items"><ul></ul></div>').appendTo("#addalbum").css("display", "block");
+        $('<div id="items"><ul></ul></div>').appendTo("#lscontent").css("display", "block");
         for (var i=0; i<localStorage.length; i++){
             var newListItem = $('<li></li>').appendTo("#items > ul");
             var key = localStorage.key(i);
@@ -152,7 +152,7 @@ $('#localstoragepage').on('pageinit', function(){
     
     //Dynamically create Edit & Delete Links
     function createEditDelLinks(key, newListItem) {
-        var editLink = $('<ul><li><a href="#">Edit Item</a></li></ul>').appendTo("#jsoncontent").on("click", editReminder);
+        var editLink = $('<ul><li><a href="#">Edit Item</a></li></ul>').appendTo("#lscontent").on("click", editReminder);
         editLink.key = key;
         $(editLink).append(newListItem);
         console.log(editLink.key);
@@ -161,7 +161,7 @@ $('#localstoragepage').on('pageinit', function(){
         var breakTag = $('br').appendTo("#addAlbumForm");
         
         //add delete single item link
-        var deleteLink = $('<ul><li><a href="#">Delete Item</a></li></ul>').appendTo("#jsoncontent").on("click", deleteReminder);
+        var deleteLink = $('<ul><li><a href="#">Delete Item</a></li></ul>').appendTo("#lscontent").on("click", deleteReminder);
         deleteLink.key = key;
         $(deleteLink).append(newListItem);
         
@@ -225,7 +225,7 @@ $('#localstoragepage').on('pageinit', function(){
         //Store JSON Object into Local Storage.
         for (var n in localStorageData) {
             var id = Math.floor(Math.random()*10000001);
-            localStorage.setItem(id, JSON.stringify(json[n]));
+            localStorage.setItem(id, JSON.stringify(localStorageData[n]));
         }
     }
     
@@ -234,4 +234,6 @@ $('#localstoragepage').on('pageinit', function(){
     lsData.on("click", getDataFromLocalStorage);
     var clearData = $("#clearData");
     clearData.on("click", clearLocalStorage);
+    var editLsData = $("#editData");
+    editLsData.on("click", editReminder);
 });
