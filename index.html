@@ -40,6 +40,7 @@
                         <li data-role="list-divider">Browse by:</li>
                         <li><a href="#jsonpage">JSON Data</a></li>
                         <li><a href="#xmlpage">XML Data</a></li>
+			<li><a href="#localstoragepage">Local Storage Data</a></li>
                     </ul>
                 </section>
                 
@@ -47,8 +48,9 @@
                     <section data-role="navbar">
                         <ul>
                             <li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
-                            <li><a href="#jsonpage" data-icon="star">JSON Data</a></li>
-			    <li><a href="#xmlpage" data-icon="star">XML Data</a></li>
+                            <li><a href="#jsonpage" data-icon="star">JSON</a></li>
+			    <li><a href="#xmlpage" data-icon="star">XML</a></li>
+			    <li><a href="#localstoragepage" data-icon="star">Local Storage</a></li>
                             <li><a href="#addalbum" data-icon="plus">Add Item</a></li>
                         </ul>
                         
@@ -108,10 +110,11 @@
                         
                         <section data-role="fieldcontain">
 			    <ul>
-				<li><a href="#home">Cancel</a></li>
-				<li><a href="#jsonpage" id="displayJson">Display JSON Data</a></li>
-				<li><a href="#xmlpage" id="displayXml">Display XML Data</a></li>
-				<li><a href="#" id="clearData">Clear Stored Albums</a></li>
+			    <li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+                            <li><a href="#jsonpage" data-icon="star">JSON</a></li>
+			    <li><a href="#xmlpage" data-icon="star">XML</a></li>
+			    <li><a href="#localstoragepage" data-icon="star">Local Storage</a></li>
+                            <li><a href="#addalbum" data-icon="plus">Add Item</a></li>
 			    </ul>
                         </section>
                         
@@ -126,7 +129,7 @@
                     
                     <header data-role="header" data-position="fixed">
                         <img src="img/logo.png" />
-                        <h1>Saved Items</h1>
+                        <h1>JSON Items</h1>
                     </header>
                     
                     <section data-role="content" id="jsoncontent">
@@ -137,10 +140,11 @@
                     <footer data-role="footer" data-position="fixed">
                         <section data-role="navbar">
                             <ul>
-                                <li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
-                                <li><a href="#jsonpage" data-icon="star">JSON Data</a></li>
-				<li><a href="#xmlpage" data-icon="star">XML Data</a></li>
-                                <li><a href="#addalbum" data-icon="plus">Add Item</a></li>
+                            <li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+                            <li><a href="#jsonpage" data-icon="star">JSON</a></li>
+			    <li><a href="#xmlpage" data-icon="star">XML</a></li>
+			    <li><a href="#localstoragepage" data-icon="star">Local Storage</a></li>
+                            <li><a href="#addalbum" data-icon="plus">Add Item</a></li>
                             </ul>                            
                         </section>
                     </footer>
@@ -153,7 +157,7 @@
                     
                     <header data-role="header" data-position="fixed">
                         <img src="img/logo.png" />
-                        <h1>Saved Items</h1>
+                        <h1>XML Data</h1>
                     </header>
                     
                     <section data-role="content" id="xmlcontent">
@@ -164,10 +168,39 @@
                     <footer data-role="footer" data-position="fixed">
                         <section data-role="navbar">
                             <ul>
-                                <li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
-                                <li><a href="#jsonpage" data-icon="star">JSON Data</a></li>
-				<li><a href="#xmlpage" data-icon="star">XML Data</a></li>
-                                <li><a href="#addalbum" data-icon="plus">Add Item</a></li>
+                            <li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+                            <li><a href="#jsonpage" data-icon="star">JSON</a></li>
+			    <li><a href="#xmlpage" data-icon="star">XML</a></li>
+			    <li><a href="#localstoragepage" data-icon="star">Local Storage</a></li>
+                            <li><a href="#addalbum" data-icon="plus">Add Item</a></li>
+                            </ul>                            
+                        </section>
+                    </footer>
+                    
+                </section>
+		
+		<!--Local Storage Items Page-->
+		
+                <section data-role="page" id="localstoragepage" data-add-back-btn="true" data-theme="e">
+                    
+                    <header data-role="header" data-position="fixed">
+                        <img src="img/logo.png" />
+                        <h1>Local Storage Items</h1>
+                    </header>
+                    
+                    <section data-role="content" id="jsoncontent">
+                        <a href="#" id="lsbutton" data-role="button">View Local Storage Data</a>
+                    
+                    </section>
+                    
+                    <footer data-role="footer" data-position="fixed">
+                        <section data-role="navbar">
+                            <ul>
+                            <li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+                            <li><a href="#jsonpage" data-icon="star">JSON</a></li>
+			    <li><a href="#xmlpage" data-icon="star">XML</a></li>
+			    <li><a href="#localstoragepage" data-icon="star">Local Storage</a></li>
+                            <li><a href="#addalbum" data-icon="plus">Add Item</a></li>
                             </ul>                            
                         </section>
                     </footer>

@@ -84,6 +84,51 @@ $('#jsonpage').on('pageinit', function(){
     }
     
     
+    var displayJsonData = $("#jsonbutton");
+    displayJsonData.on("click", getJsonDataFromAjax);
+    
+});
+
+$('#xmlpage').on('pageinit', function(){
+    //code needed for home page goes here
+    
+    function getXmlDataFromAjax(){
+        $("#xmlcontent").empty();
+        $.ajax({
+            url: 'xhr/data.xml',
+            type: 'GET',
+            dataType: 'xml',
+            success: function(data, status){
+                console.log(data, status)
+                console.log(data);
+                console.log(data.album);
+                $(data).each(function(){
+                    $(' '+
+                        '<div class=albums">'+
+                            '<ul>'+
+                                '<li>'+ data.album.artist +'</li>'+
+                                '<li>'+ data.album.album +'</li>'+
+                                '<li>'+ data.album.format +'</li>'+
+                                '<li>'+ data.album.date +'</li>'+
+                                '<li>'+ data.album.notes +'</li>'+
+                            '</ul>'+
+                        '</div>'
+                    ).appendTo('#xmlcontent');
+                });
+            },
+            error: function(error, parseerror){
+                console.log(error, parseerror)
+            }
+        })
+    }
+    
+    var displayXmlData = $("#xmlbutton");
+    displayXmlData.on("click", getXmlDataFromAjax);
+});
+
+$('#localstoragepage').on('pageinit', function(){
+    //code needed for home page goes here
+    
     //Dynamically create Edit & Delete Links
     function createEditDelLinks(key, newListItem) {
         var editLink = $('<ul><li><a href="#">Edit Item</a></li></ul>').appendTo("#jsoncontent").on("click", editReminder);
@@ -153,14 +198,10 @@ $('#jsonpage').on('pageinit', function(){
             return false;
         }
     }
-
     
-    var displayJsonData = $("#jsonbutton");
-    displayJsonData.on("click", getJsonDataFromAjax);
+    
+    var lsData = $("#lsbutton");
+    lsData.on("click", getDataFromLocalStorage);
     var clearData = $("#clearData");
     clearData.on("click", clearLocalStorage);
-});
-
-$('#xmlpage').on('pageinit', function(){
-    //code needed for home page goes here
 });
